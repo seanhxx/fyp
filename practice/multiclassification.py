@@ -24,3 +24,4 @@ one_hot_train_labels = to_one_hot(train_labels)
 one_hot_test_labels = to_one_hot(test_labels)
 
 model = models.Sequential()
+
