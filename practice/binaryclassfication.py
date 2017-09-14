@@ -61,13 +61,13 @@ plt.ylabel("Loss")
 
 plt.show()
 
-plt.clf()
-acc_values = history_dict['acc']
-val_acc_values = history_dict['val_acc']
+# plt.clf()
+# acc_values = history_dict['acc']
+# val_acc_values = history_dict['val_acc']
 
-plt.plot(epochs, acc_values, 'bo')
-plt.plot(epochs, val_acc_values, 'b+')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
+# plt.plot(epochs, acc_values, 'bo')
+# plt.plot(epochs, val_acc_values, 'b+')
+# plt.xlabel('Epochs')
+# plt.ylabel('Accuracy')
 
-plt.show()
+# plt.show()
