@@ -8,17 +8,20 @@ import numpy as np
 
 def vectorize_sequences(sequences, dimension=10):
     results = np.zeros((len(sequences), dimension))
+    print(list(enumerate(sequences)))
     for i, sequence in enumerate(sequences):
+        # print(sequence)
         results[i, sequence] = 1.
+        print(results)
     return results
 training_labels = [0,1,0]
 training_data = [list([5,5,8,4,2,1,4]),
                  list([3,4,6,7,2]),
                  list([1,9,8,6,4,6,3,7,4,3])]
-print(training_data[:2])
+# print(training_data[:2])
 test = vectorize_sequences(training_data)
-print(test[:1])
-test_label = vectorize_sequences(training_labels)
-print(test_label)
+# print(test[:3])
+# test_label = vectorize_sequences(training_labels)
+# print(test_label)
 # plt.matshow(test)
 # plt.show()
