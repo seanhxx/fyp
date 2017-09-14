@@ -25,8 +25,9 @@ one_hot_train_labels = to_one_hot(train_labels)
 one_hot_test_labels = to_one_hot(test_labels)
 
 model = models.Sequential()
-model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
-model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(128, activation='relu', input_shape=(10000,)))
+# model.add(layers.Dense(128, activation='relu'))
+model.add(layers.Dense(128, activation='relu'))
 model.add(layers.Dense(46, activation='softmax'))
 
 model.compile(optimizer='rmsprop',
@@ -41,8 +42,8 @@ partial_y_train = one_hot_train_labels[1000:]
 
 history = model.fit(partial_x_train,
                     partial_y_train,
-                    epochs=20,
-                    batch_size=512,
+                    epochs=5,
+                    batch_size=128,
                     validation_data=(x_val, y_val))
 
 history_dict = history.history
