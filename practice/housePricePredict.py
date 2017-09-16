@@ -32,18 +32,14 @@ for i in range(k):
     val_data = train_data[i * num_val_samples: (i + 1) * num_val_samples]
     val_targets = train_targets[i * num_val_samples: (i + 1) * num_val_samples]
 
-    if i == 0:
-        partial_train_data = train_data[(i + 1) * num_val_samples:]
-        partial_train_targets = train_data[(i + 1) * num_val_samples:]
-    else:
-        partial_train_data = np.concatenate(
-            [train_data[:i * num_val_samples],
-             train_data[(i + 1) * num_val_samples:]],
-            axis=0)
-        partial_train_targets = np.concatenate(
-            [train_targets[:i * num_val_samples],
-             train_data[(i + 1) * num_val_samples:]],
-            axis=0)
+    partial_train_data = np.concatenate(
+        [np.array(train_data[:i * num_val_samples]).reshape(i * num_val_samples, 13),
+         np.array(train_data[(i + 1) * num_val_samples:]).reshape((k-i-1) * num_val_samples, 13)],
+         axis=0)
+    partial_train_targets = np.concatenate(
+        [np.array(train_targets[:i * num_val_samples]),
+         np.array(train_targets[(i + 1) * num_val_samples:])],
+         axis=0)
 
     model = build_model()
     model.fit(partial_train_data, partial_train_targets,

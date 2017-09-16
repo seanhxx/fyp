@@ -35,11 +35,13 @@ for i in range(k):
     val_data = train_data[i * num_val_samples: (i + 1) * num_val_samples]
     # val_targets = train_targets[i * num_val_samples: (i + 1) * num_val_samples]
 
-    print(train_data[:i * num_val_samples])
-    print(train_data[(i+1) * num_val_samples:])
+    a = np.array(train_data[:i * num_val_samples]).reshape(i * num_val_samples,12)
+    b = np.array(train_data[(i+1) * num_val_samples:]).reshape((k-i-1) * num_val_samples, 12)
+    print(a.shape)
+    print(b.shape)
     partial_train_data = np.concatenate(
-         [train_data[:0 * num_val_samples],
-         train_data[(0+1) * num_val_samples:]],
+         [np.array(train_data[:i * num_val_samples]).reshape(i * num_val_samples, 12),
+         np.array(train_data[(i+1) * num_val_samples:]).reshape((k-i-1) * num_val_samples, 12)],
         axis=0)
     print('partial train data')
     print(partial_train_data)
