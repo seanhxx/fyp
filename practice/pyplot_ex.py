@@ -6,20 +6,45 @@ import numpy as np
 # print(train_data[:10])
 # print(train_labels[:10])
 
-def vectorize_sequences(sequences, dimension=10):
-    results = np.zeros((len(sequences), dimension))
-    print(list(enumerate(sequences)))
-    for i, sequence in enumerate(sequences):
-        # print(sequence)
-        results[i, sequence] = 1.
-        print(results)
-    return results
-training_labels = [0,1,0]
-training_data = [list([5,5,8,4,2,1,4]),
-                 list([3,4,6,7,2]),
-                 list([1,9,8,6,4,6,3,7,4,3])]
+# def vectorize_sequences(sequences, dimension=10):
+#     results = np.zeros((len(sequences), dimension))
+#     for i, sequence in enumerate(sequences):
+#         results[i, sequence] = 1.
+#     return results
+
+train_targets = [10,11,12,13,14,15,16,17,18,19,20,21]
+train_data = [[0,5,8,4,2,1,4,8,6,4,3,2],
+              [1,4,6,7,2,3,6,3,2,1,4,2],
+              [2,4,6,7,2,3,6,3,2,1,4,2],
+              [3,4,6,7,2,3,6,3,2,1,4,2],
+              [4,4,6,7,2,3,6,3,2,1,4,2],
+              [5,4,6,7,2,3,6,3,2,1,4,2],
+              [6,4,6,7,2,3,6,3,2,1,4,2],
+              [7,4,6,7,2,3,6,3,2,1,4,2],
+              [8,4,6,7,2,3,6,3,2,1,4,2],
+              [9,4,6,7,2,3,6,3,2,1,4,2],
+              [10,4,6,7,2,3,6,3,2,1,4,2],
+              [11,9,8,6,4,6,3,7,4,3,4,3]]
+k = 4
+num_val_samples = len(train_data) // k
+print(num_val_samples)
+num_epochs = 100
+all_scores = []
+for i in range(k):
+    print('processing fold #', i)
+    val_data = train_data[i * num_val_samples: (i + 1) * num_val_samples]
+    # val_targets = train_targets[i * num_val_samples: (i + 1) * num_val_samples]
+
+    print(train_data[:i * num_val_samples])
+    print(train_data[(i+1) * num_val_samples:])
+    partial_train_data = np.concatenate(
+         [train_data[:0 * num_val_samples],
+         train_data[(0+1) * num_val_samples:]],
+        axis=0)
+    print('partial train data')
+    print(partial_train_data)
 # print(training_data[:2])
-test = vectorize_sequences(training_data)
+# test = vectorize_sequences(training_data)
 # print(test[:3])
 # test_label = vectorize_sequences(training_labels)
 # print(test_label)
