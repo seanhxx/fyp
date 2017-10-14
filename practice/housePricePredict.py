@@ -48,3 +48,4 @@ for i in range(k):
     val_mse, val_mae = model.evaluate(val_data,val_targets, verbose=0)
     all_scores.append(val_mae)
     print(all_scores)
+print(np.mean(all_scores))
