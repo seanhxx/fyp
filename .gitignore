@@ -1,0 +1,14 @@
+# images #
+##########
+*.jpg
+
+# label file #
+##############
+*.xml
+
+# model/training directories in object_detection_1 #
+##############################
+/object_detection_1/export/
+/object_detection_1/img_bicycle/
+/object_detection_1/ssd_mobilenet_v1_coco_11_06_2017/
+/object_detection_1/training/

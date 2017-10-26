@@ -1,3 +1,4 @@
+# Command for fetch urls from google image search on chrome:
 # a = document.querySelectorAll('img')
 # document.body.innerText = Array.prototype.map.call(a,x=>x.currentSrc)
 
