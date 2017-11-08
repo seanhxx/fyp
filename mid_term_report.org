@@ -59,4 +59,13 @@ that can help to reduce the training time significantly. The result is shown in
 Figure.
 
 ** Computer Vision Field
-
+The research target on computer vision field for the first semester is to learn
+basic image processing techniques and how to use openCV via python API. To
+reduce the calculation cost, a color image is typically converted to a gray
+scale image before fed into deep neural network. To reduce the noise, Gaussian
+filter or alpha-trimmed mean filter can be applied. Point processing tools like
+contrast stretching is used to improve the illumination of images which are
+under exposure. As what I mentioned before, image transformation or degradation
+can also be used for data augmentation to mitigate overfitting problems. In
+openCV, many of these algorithms have been implemented and can be called as a
+function. 
