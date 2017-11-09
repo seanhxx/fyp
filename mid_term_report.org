@@ -1,71 +1,88 @@
 * Introduction
-Object detection is a technology related to computer vision and image
-processing. In terms of algorithm, classical techniques, including point
-processing, edge detection and morphological operation, can be used to detect
-objects edge of a certain class(such as humans, buildings or cars) in digital
-images and videos. With the development of deep learning in recent years, new
-techniques(such as Convolutional Neural Network(CNN)) appears to show its high
-accuracy on object detection task.
+  Object detection is a technology related to computer vision and image
+  processing. In terms of algorithm, classical techniques, including point
+  processing, edge detection and morphological operation, can be used to detect
+  objects edge of a certain class(such as humans, buildings or cars) in digital
+  images and videos. With the development of deep learning in recent years, new
+  techniques(such as Convolutional Neural Network(CNN)) appears to show its high
+  accuracy on object detection task.
 
-The objective of my project is to apply deep learning techniques on object
-detection in the auto-driving environment. The deep learning techniques includes
-Extreme Learning Machine(ELM) and CNN. By the end of this project, the neural
-network is supposed to provide capability to differentiate object such as
-vehicles, bicycle riders and pedestrians.
+  The objective of my project is to apply deep learning techniques on object
+  detection in the auto-driving environment. The deep learning techniques
+  includes Extreme Learning Machine(ELM) and CNN. By the end of this project,
+  the neural network is supposed to provide capability to differentiate object
+  such as vehicles, bicycle riders and pedestrians.
+
 * Research Progress
-Object detection can use both classical method and deep learning method. Each of
-them has its own advantages and disadvantages. Typically, the classical method
-is used as a pre-processing method for noise removal, contrast enhancement or
-image segmentation. Especially, the pre-processing method can be used for data
-augmentation to improve overfitting problems, which is caused by having too few
-samples for a deep learning model to learn from. On the other side, deep
-learning method has its advantages over feature engineering since it can learn
-features of object by itself. This is very essential for object detection under
-auto driving environment, because the complexity of image features has becomes
-too high that no classical algorithm can handle it both efficiently and
-accurately. To combine and utilize different methods on object detection in
-future, my research mainly focuses on two field:
+  Object detection can use both classical method and deep learning method. Each
+  of them has its own advantages and disadvantages. Typically, the classical
+  method is used as a pre-processing method for noise removal, contrast
+  enhancement or image segmentation. Especially, the pre-processing method can
+  be used for data augmentation to improve overfitting problems, which is caused
+  by having too few samples for a deep learning model to learn from. On the
+  other side, deep learning method has its advantages over feature engineering
+  since it can learn features of object by itself. This is very essential for
+  object detection under auto driving environment, because the complexity of
+  image features has becomes too high that no classical algorithm can handle it
+  both efficiently and accurately. To combine and utilize different methods on
+  object detection in future, my research mainly focuses on two field:
 
-1. Fundamentals of deep learning techniques and utilization of mature deep
-   learning framework, such as TensorFlow and Keras.
-2. Computer vision basic and utilization of computer vision tools, such as
-   OpenCV.
+  1. Fundamentals of deep learning techniques and utilization of mature deep
+     learning framework, such as TensorFlow and Keras.
+  2. Computer vision basic and utilization of computer vision tools, such as
+     OpenCV.
+
 ** Deep Learning Field
-The major deep learning technique on which I researched for the first semester
-is CNN. The core building block of CNN is the "layer". The layer is a
-data-processing module which can be conceived as a "filter" for data. It
-extracts representations or features out of the data fed into them. This
-representations determines the weight of nodes within each layers and the weight
-will change dynamically after each iteration of learning progress according to
-input samples and difference between output prediction and target label, which
-is usually known as the loss score. To update the weight on each node, the CNN
-use "backpropagation" algorithm.
+   The major deep learning technique on which I researched for the first
+   semester is CNN. The core building block of CNN is the "layer". The layer is
+   a data-processing module which can be conceived as a "filter" for data. It
+   extracts representations or features out of the data fed into them. This
+   representations determines the weight of nodes within each layers and the
+   weight will change dynamically after each iteration of learning progress
+   according to input samples and difference between output prediction and
+   target label, which is usually known as the loss score. To update the weight
+   on each node, the CNN use "backpropagation" algorithm.
 
-The CNN framework in TensorFlow and Keras consists of two main layers, which are
-convolution layers and pooling layers. The fundamental difference between a
-normal densely-connected layer and a convolution layer is this: dense layers
-learn global patterns in their input feature space, while convolution layers
-learn local patterns through a convolution kernel. Due to this characteristic,
-the patterns CNN learns are translation-invariant. Unlike convolution layers
-splitting entire image into many small features, the role of pooling layers is
-to aggressively downsample feature maps. By doing this, it allows successive
-convolution layers to learn spatial hierarchies of patterns through increasingly
-large window and hence reduce the influence of overfitting.
+   The CNN framework in TensorFlow and Keras consists of two main layers, which
+   are convolution layers and pooling layers. The fundamental difference between
+   a normal densely-connected layer and a convolution layer is this: dense
+   layers learn global patterns in their input feature space, while convolution
+   layers learn local patterns through a convolution kernel. Due to this
+   characteristic, the patterns CNN learns are translation-invariant. Unlike
+   convolution layers splitting entire image into many small features, the role
+   of pooling layers is to aggressively downsample feature maps. By doing this,
+   it allows successive convolution layers to learn spatial hierarchies of
+   patterns through increasingly large window and hence reduce the influence of
+   overfitting.
 
-Knowing the fundamental component of CNN, what I have exercised is to re-train a
-pre-trained model(trained by Microsoft Common Objects in Context dataset) and
-detect the bicycle rider on images. The purpose to use a pre-trained model is
-that can help to reduce the training time significantly. The result is shown in
-Figure.
+   Knowing the fundamental component of CNN, what I have exercised is to re-train a
+   pre-trained model(trained by Microsoft Common Objects in Context dataset) and
+   detect the bicycle rider on images. The purpose to use a pre-trained model is
+   that can help to reduce the training time significantly. The result is shown in
+   Figure.
 
 ** Computer Vision Field
-The research target on computer vision field for the first semester is to learn
-basic image processing techniques and how to use openCV via python API. To
-reduce the calculation cost, a color image is typically converted to a gray
-scale image before fed into deep neural network. To reduce the noise, Gaussian
-filter or alpha-trimmed mean filter can be applied. Point processing tools like
-contrast stretching is used to improve the illumination of images which are
-under exposure. As what I mentioned before, image transformation or degradation
-can also be used for data augmentation to mitigate overfitting problems. In
-openCV, many of these algorithms have been implemented and can be called as a
-function. 
+   The research target on computer vision field for the first semester is to learn
+   basic image processing techniques and how to use openCV via python API. To
+   reduce the calculation cost, a color image is typically converted to a gray
+   scale image before fed into deep neural network. To reduce the noise, Gaussian
+   filter or alpha-trimmed mean filter can be applied. Point processing tools like
+   contrast stretching is used to improve the illumination of images which are
+   under exposure. As what I mentioned before, image transformation or degradation
+   function can also be used for data augmentation to mitigate overfitting
+   problems. In openCV, many of these algorithms have been implemented and can be
+   called as a function.
+
+* Plan For Next Stage
+  Based on my current research progress, the plan for the next step is to study
+  and try to implement one of the state-of-the-art deep learning techniques,
+  such as CNN-ELM and Mask R-CNN. Another potential research path is about
+  Recursive Cortical Network (RCN) on object detection area. Currently, CNN can
+  achieve a good accuracy on object detection task with enough number of
+  lossless training samples. However, in a real-time auto driving environment,
+  it is impossible to collect all kinds of perfect images of street under
+  different situations. Moreover, long pre-processing and training time and high
+  computation cost required by CNN also limit its application on auto driving
+  car. To solve this problem, a new neural network RCN, which mimic human brain
+  and achieve high accuracy on CAPTCHA recognition, may be used for object
+  detection on auto driving environment.
