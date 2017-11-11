@@ -1,4 +1,4 @@
-% Created 2017-11-11 Sat 14:25
+% Created 2017-11-11 Sat 19:25
 % Intended LaTeX compiler: pdflatex
 \documentclass[titlepage]{article}
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,8 @@ EEE \\
 \date{11 Nov, 2017 \\
 }
 \title{\includegraphics[width=\textwidth]{logo_ntu_new.png} \\
-[5\baselineskip] FYP MID-TERM\\
+[5\baselineskip] FYP \\
+INTERIM \\
 REPORT \\
 [5\baselineskip]}
 \hypersetup{
@@ -33,7 +34,8 @@ U1521319A \\
 EEE \\
 },
  pdftitle={\includegraphics[width=\textwidth]{logo_ntu_new.png} \\
-[5\baselineskip] FYP MID-TERM\\
+[5\baselineskip] FYP \\
+INTERIM \\
 REPORT \\
 [5\baselineskip]},
  pdfkeywords={},
@@ -50,45 +52,46 @@ REPORT \\
 \pagenumbering{arabic}
 
 \section{Introduction}
-\label{sec:org3490c8d}
+\label{sec:org4837838}
 Object detection is a technology related to computer vision and image
 processing. In terms of algorithm, classical techniques, including point
 processing, edge detection and morphological operation, can be used to detect
 objects edge of a certain class(such as humans, buildings or cars) in digital
 images and videos. With the development of deep learning in recent years, new
-techniques(such as Convolutional Neural Network(CNN)) appears to show its high
+techniques such as Convolutional Neural Network(CNN) appears to show its high
 accuracy on object detection task.
 
 The objective of my project is to apply deep learning techniques on object
-detection in the auto-driving environment. The deep learning techniques
-includes Extreme Learning Machine(ELM) and CNN. By the end of this project,
-the neural network is supposed to provide capability to differentiate object
-such as vehicles, bicycle riders and pedestrians.
+detection in auto driving environment. The deep learning techniques include
+Extreme Learning Machine(ELM), CNN, and so on. By the end of this project, it
+is supposed to demonstrate a deep neural network which should have capability
+to differentiate object such as vehicles, bicycle riders and pedestrians.
 
 \section{Research Progress}
-\label{sec:orgc92dcff}
+\label{sec:org1bc5191}
 Object detection can use both classical method and deep learning method. Each
 of them has its own advantages and disadvantages. Typically, the classical
-method is used as a pre-processing method for noise removal, contrast
+method is used as a pre-processing procedure for noise removal, contrast
 enhancement or image segmentation. Especially, the pre-processing method can
-be used for data augmentation to improve overfitting problems, which is caused
-by having too few samples for a deep learning model to learn from. On the
-other side, deep learning method has its advantages over feature engineering
-since it can learn features of object by itself. This is very essential for
-object detection under auto driving environment, because the complexity of
-image features has becomes too high that no classical algorithm can handle it
-both efficiently and accurately. To combine and utilize different methods on
-object detection in future, my research mainly focuses on two field:
+be used for data augmentation to mend some overfitting problems, which is
+usually caused by having too few samples for model to learn from. On the other
+side, deep learning method has its advantages on feature engineering over
+classical method. Shortly speaking, a deep neural network can learn object's
+features by itself, which is a very essential characteristic for object
+detection in auto driving environment, because the complexity of image
+features usually can become too high so that classical algorithm cannot handle
+it both efficiently and accurately. In order to utilize the advantages of both
+sides, the range of my first-stage research covers these two fields:
 
 \begin{enumerate}
-\item Fundamentals of deep learning techniques and utilization of mature deep
-learning framework, such as TensorFlow and Keras.
-\item Computer vision basic and utilization of computer vision tools, such as
-OpenCV.
+\item Fundamentals of deep learning techniques and the utilization of mature deep
+learning framework, such as using TensorFlow as backend and Keras as front end.
+\item Computer vision basic and practical exercise using computer vision tools,
+such as OpenCV.
 \end{enumerate}
 
 \subsection{Deep Learning Field}
-\label{sec:orgce6a2e2}
+\label{sec:org47aef59}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=300]{cnn_model.PNG}
@@ -96,15 +99,15 @@ OpenCV.
 \end{figure}
 \newpage
 
-The major deep learning technique on which I researched for the first
-semester is CNN. The core building block of CNN is the "layer". The layer is
-a data-processing module which can be conceived as a "filter" for data. It
-extracts representations or features out of the data fed into them. This
-representations determines the weight of nodes within each layers and the
-weight will change dynamically after each iteration of learning progress
-according to input samples and difference between output prediction and
-target label, which is usually known as the loss score. To update the weight
-on each node, the CNN use "backpropagation" algorithm.
+The major deep learning technique I researched for the first stage is CNN.
+The core building block of CNN is the "layer". The layer is a data-processing
+module which can be conceived as a "filter" for data. It extracts
+representations or features out of the data fed into them. These
+representations determine the weight of nodes within each layers. The weight
+of nodes changes dynamically after each iteration of learning progress,
+according to both value of input and difference between output and target
+value, which is also known as the loss score. To update the weight on each
+node, the CNN use "backpropagation" algorithm.
 
 \begin{listing}
 \begin{verbatim}
@@ -147,15 +150,19 @@ it allows successive convolution layers to learn spatial hierarchies of
 patterns through increasingly large window and hence reduce the influence of
 overfitting [1].
 
-Knowing the fundamental component of CNN, what I have exercised is to use a
+Known the fundamental component of CNN, what I have exercised is to use a
 pre-trained model, which is trained by Microsoft Common Objects in Context
-dataset, and detect the bicycle rider on images. The purpose to use a
+(COCO) dataset, to detect the bicycle rider on images. The purpose of using a
 pre-trained model is that it can help to reduce the training time
-significantly.
+significantly and meanwhile maintain a high accuracy on validation set even
+given small number of training samples.
 
 To train a CNN model using TensorFlow backend, it needs to prepare some
-labeled training data. What I tried is to download pictures from google
-search directly using a image crawler.
+labeled training data. What I tried is to download pictures directly from
+google image search engine by using a image crawler. One of the benefits is
+that it helps to degrade the resolution of images to a level of 200 x 150
+pixels, which is exactly a suitable size for deep neural network when the
+amount of training data is huge.
 
 \begin{listing}
 \begin{verbatim}
@@ -199,9 +206,9 @@ for url in result:
 \newline
 \end{listing}
 
-The next step is to label the images. The tools used for labeling is called
-"labelImg" [2] (Figure 2). After labeling, this tool helps to generate a ".xml"
-file to store the label information (List 3).
+The next step is to label the training images. The tool I used for image
+labeling is called "labelImg" [2] (Figure 2). Basically, this tool helps to
+generate a ".xml" file to store the label tag (List 3).
 
 \begin{figure}[htbp]
 \centering
@@ -244,8 +251,8 @@ file to store the label information (List 3).
 \end{listing}
 
 The final step of training data preparation is to generate a
-TensorFlow-recognizable data format [3] (List 4). The number of training
-dataset is 150 and validation dataset is 16.
+TensorFlow-recognizable data record [3] (List 4). The number of training
+dataset I used here is 150 and validation data set is 16.
 
 \begin{listing}
 \begin{verbatim}
@@ -294,23 +301,23 @@ def create_tf_example(group, path):
 \newline
 \end{listing}
 
-Since the training data is prepared, the execution of following procedure can
-feed data into the neural network. As what I mentioned before, to reduce
-training time and increase detection accuracy with small number of training
-data set, a pre-trained model is used at current stage of research. Besides,
-TensorFlow Object Detection API provides the function to train pre-trained
-model with new data set [5]. The training loss value is shown in Figure 3.
+After the training data is prepared, the execution of following procedures
+will feed data into the neural network. As what I mentioned before, to reduce
+training time and increase accuracy with small amount of training data, a
+pre-trained model is used at current stage of research. Besides, TensorFlow
+Object Detection API provides the function to train a pre-trained model with
+new data set [5]. The total loss of validation is shown in Figure 3.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=300]{total_loss.png}
-\caption{Training Total Loss}
+\caption{Total Loss Of Validation}
 \end{figure}
 
-As shown in Figure 4 and 5, the test image shows the percentage of reliability of
-the detection. Due to the limit number of training data, the loss value is
-relative high and occasionally some test images actually cannot be recognized
-even. This is the overfitting problem. To solve it, some image processing
+As shown in Figure 4 and 5, the test images show the percentage of
+reliability of the detection. Due to the limit amount of training data, the
+loss is relatively high, and occasionally some test images actually cannot be
+recognized even. To solve this overfitting problem, image processing
 techniques are needed for data augmentation.
 
 \begin{figure}[htbp]
@@ -327,7 +334,7 @@ techniques are needed for data augmentation.
 \end{figure}
 
 \subsection{Computer Vision Field}
-\label{sec:org9b66367}
+\label{sec:org56be481}
 The research target on computer vision field for the first semester is to
 learn some basic image processing techniques and use openCV via python
 API. 
@@ -338,13 +345,20 @@ Gaussian filter or alpha-trimmed mean filter can be applied. Point processing
 tools like contrast stretching is used to improve the illumination of images
 which are under exposure. As what I mentioned before, image transformation or
 degradation function can also be used for data augmentation to mitigate
-overfitting problems. 
+overfitting problem. 
 
-OpenCV is a open source computer vision library. It provides plenty of
-embedded computer vision functions to use immediately, as well as some APIs
-to control camera devices on different hardwares. For example, the web camera
-on laptop can be accessed directly through openCV and is used as a testing of
-the pre-trained model at real time (Figure 6).
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=300]{data_aug.png}
+\caption{Data Augmentation}
+\end{figure}
+
+OpenCV is a open source computer vision library and provides plenty of
+embedded computer vision functions for immediate use. When compiling OpenCV
+with python binding, one can use OpenCV python API to control camera devices on
+different hardwares. For example, the web camera on laptop can be accessed
+directly through python and can be used as a testing of the pre-trained model at
+real time (Figure 6).
 
 \begin{figure}[htbp]
 \centering
@@ -354,19 +368,19 @@ the pre-trained model at real time (Figure 6).
 \newpage
 
 \section{Plan For Next Stage}
-\label{sec:org87577af}
+\label{sec:org46c1947}
 Based on my current research progress, the plan for the next step is to study
 and try to implement one of the state-of-the-art deep learning techniques,
-such as CNN-ELM and Mask R-CNN. Another potential research path is about
-Recursive Cortical Network (RCN) on object detection area [4]. Currently, CNN
-can achieve a good accuracy on object detection task with enough number of
-lossless training samples. However, in a real-time auto driving environment,
-it is impossible to collect all kinds of perfect images of street under
-different situations. Moreover, long pre-processing and training time and high
-computation cost required by CNN also limit its application on auto driving
-car. To solve this problem, a new neural network RCN, which mimics human brain
-and has achieved high accuracy on CAPTCHA recognition, may be used for object
-detection on auto driving environment.
+such as CNN-ELM and Mask R-CNN. Another potential research direction is about
+applying Recursive Cortical Network (RCN) [4] on object detection area.
+Currently, CNN can achieve a good accuracy on object detection task with
+enough number of lossless training samples. However, in a real time world like
+auto driving environment, it is impossible to collect images of street view
+under different situations with a perfect quality all the time. Moreover,
+image pre-processing and long training time required by CNN also limit its
+application on auto driving environment. To solve this problem, a new neural
+network RCN, which mimics human brain's cortex and has already achieved high
+accuracy on CAPTCHA recognition, may be used for general object detection.
 
 
 \addcontentsline{toc}{section}{References}
