@@ -1,0 +1,52 @@
+* Install OpenCV with CUDA-8.0
+** Set gcc 4.9 as the default compiler
+   sudo unlink /usr/bin/gcc
+
+   sudo ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
+
+   gcc --version
+
+   sudo unlink /usr/bin/g++
+
+   sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
+
+** Remove Protobuf 2.6.1 and Install Protobuf 3.5.0
+   cd path/to/protobuf-2.6.1/
+
+   sudo make uninstall
+
+   Go to https://github.com/google/protobuf/releases/ download protoc-3.5.0-linux-x86_64.zip or latest version
+
+   # Unzip
+
+   unzip protoc-3.5.0-linux-x86_64.zip -d protoc3
+
+   # Move protoc to /usr/local/bin/
+
+   sudo mv protoc3/bin/* /usr/local/bin/
+
+   # Move protoc3/include to /usr/local/include/
+
+   sudo mv protoc3/include/* /usr/local/include/
+
+   # Optional: change owner
+
+   sudo chwon [user] /usr/local/bin/protoc
+
+   sudo chwon -R [user] /usr/local/include/google
+   
+   protoc --version
+
+** Install OpenCV
+   Follow the link: https://github.com/milq/milq/blob/master/scripts/bash/install-opencv.sh
+
+** Set gcc 6 as default again (last step)
+   sudo unlink /usr/bin/gcc
+
+   sudo ln -s /usr/bin/gcc-6 /usr/bin/gcc
+
+   gcc --version
+
+   sudo unlink /usr/bin/g++
+
+   sudo ln -s /usr/bin/g++-6 /usr/bin/g++
