@@ -1,14 +1,17 @@
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
+cmake \
 -D WITH_QT=ON \
--D WITH_OPENGL=ON \
--D FORCE_VTK=ON \
 -D WITH_TBB=ON \
--D WITH_GDAL=ON \
--D WITH_XINE=ON \
--D BUILD_EXAMPLES=ON \
+-D WITH_GDAL=OFF \
 -D ENABLE_PRECOMPILED_HEADERS=OFF \
--D BUILD_opencv_python2=no \
+-D BUILD_opencv_python2=OFF \
 -D CMAKE_INSTALL_PREFIX=$(~/anaconda3/bin/python3 -c "import sys; print(sys.prefix)")/opt \
+-D PYTHON_EXECUTABLE=$(~/anaconda3/bin/python3 -c "import sys; print(sys.executable)") \
+-D PYTHON_LIBRARY="/home/seanhxx/anaconda3/lib/libpython3.6m.so" \
+-D PYTHON3_LIBRARY="/home/seanhxx/anaconda3/lib/libpython3.6m.so" \
+-D PYTHON3_LIBRARIES="/home/seanhxx/anaconda3/lib/libpython3.6m.so" \
 -D PYTHON3_EXECUTABLE=$(~/anaconda3/bin/python3 -c "import sys; print(sys.executable)") \
 -D PYTHON3_INCLUDE_DIR=$(~/anaconda3/bin/python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
--D PYTHON3_PACKAGES_PATH=$(~/anaconda3/bin/python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
+-D PYTHON3_INCLUDE_DIR2="/home/seanhxx/anaconda3/include" \
+-D PYTHON3_INCLUDE_PATH=$(~/anaconda3/bin/python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -D PYTHON3_NUMPY_INCLUDE_DIRS="/home/seanhxx/anaconda3/lib/python3.6/site-packages/numpy/core/include" \
+-D PYTHON3_PACKAGES_PATH=$(~/anaconda3/bin/python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") -D HDF5_C_LIBRARY_z="/home/seanhxx/anaconda3/lib/libz.so" \
+..
